@@ -1,17 +1,6 @@
 import sqlite3 as sq
 
 
-# Speciality = [
-#     ("Хирург",),
-#     ("Психолог",),
-#     ("ВРАЧ",),
-#     ("Окулист",),
-#     ("Нарколог",),
-#     ("Дантист",),
-#     ("Терапевт",),
-#     ("Спортивный врач",)
-# ]
-
 with sq.connect("test_base.db") as con:
     cur = con.cursor()
 
@@ -48,5 +37,3 @@ with sq.connect("test_base.db") as con:
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR2(300)
         )""")
-
-    # cur.executemany('INSERT INTO SPECIALITY VALUES(NULL, ?)', Speciality)
