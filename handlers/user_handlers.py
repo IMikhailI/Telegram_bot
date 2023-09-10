@@ -58,7 +58,7 @@ async def cmd_time(message: Message, state: FSMContext):
     else:
         item2 = message.text
         print("item2 - ", item2)
-        await message.answer(f"Выберите любое время приёма\n{item2}", reply_markup=time_keyboards())
+        await message.answer("Выберите любое время приёма", reply_markup=time_keyboards())
         await state.set_state(St.step3)
 
 
@@ -71,7 +71,7 @@ async def cmd(message: Message, state: FSMContext):
     else:
         item3 = message.text
         print("item3 - ", item3)
-        await message.answer(f"Теперь давайте авторизуемся\n{item3}", reply_markup=None)
+        await message.answer("Теперь давайте авторизуемся", reply_markup=None)
         await state.set_state(St.step4)
 
 
@@ -84,7 +84,7 @@ async def cmd(message: Message, state: FSMContext):
     else:
         item4 = message.text
         print("item4 - ", item4)
-        await message.answer(f"Подтвердите запись к врачу\n{item4}", reply_markup=None)
+        await message.answer("Подтвердите запись к врачу", reply_markup=None)
         await state.set_state()
 
 
