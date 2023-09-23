@@ -7,12 +7,9 @@ with sq.connect("test_base.db") as con:
     cur.execute("DROP TABLE IF EXISTS EVENT")
     cur.execute("""CREATE TABLE IF NOT EXISTS EVENT(
         id NUMBER PRIMARY KEY NOT NULL,
-        start_date DATE NOT NULL,
+        start_date datetime NOT NULL,
         client_data VARCHAR2(200),
-        duration NUMBER NOT NULL,
         worker_id NUMBER,
-        event_type_id NUMBER NOT NULL,
-        FOREIGN KEY(event_type_id) REFERENCES EVENT_TYPE(id),
         FOREIGN KEY(worker_id) REFERENCES WORKER(id)
         )""")
 
@@ -24,12 +21,6 @@ with sq.connect("test_base.db") as con:
         patr_name VARCHAR2(100),
         speciality_id NUMBER,
         FOREIGN KEY(speciality_id) REFERENCES SPECIALITY(id)
-        )""")
-
-    cur.execute("DROP TABLE IF EXISTS EVENT_TYPE")
-    cur.execute("""CREATE TABLE IF NOT EXISTS EVENT_TYPE(
-        id NUMBER PRIMARY KEY NOT NULL,
-        name VARCHAR2(150)
         )""")
 
     cur.execute("DROP TABLE IF EXISTS SPECIALITY")
