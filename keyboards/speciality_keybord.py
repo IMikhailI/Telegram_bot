@@ -2,12 +2,12 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 import sqlite3 as sq
 
 import os
-from os import path
+from Telegram_bot.database.path import get_script_dir
 
 
-def get_script_dir():
-    abs_path = path.abspath(__file__)  # полный путь к файлу скрипта
-    return path.dirname(abs_path)
+# def get_script_dir():
+#     abs_path = path.abspath(__file__)  # полный путь к файлу скрипта
+#     return path.dirname(abs_path)
 
 
 def speciality_keyboards():
