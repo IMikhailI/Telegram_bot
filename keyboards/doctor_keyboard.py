@@ -3,12 +3,12 @@ import sqlite3 as sq
 # from Telegram_bot.database.base import script_path
 
 import os
-from os import path
+from Telegram_bot.database.path import get_script_dir
 
 
-def get_script_dir():
-    abs_path = path.abspath(__file__)  # полный путь к файлу скрипта
-    return path.dirname(abs_path)
+# def get_script_dir():
+#     abs_path = path.abspath(__file__)  # полный путь к файлу скрипта
+#     return path.dirname(abs_path)
 
 
 def doctor_keyboard(buttons: str):
@@ -16,11 +16,11 @@ def doctor_keyboard(buttons: str):
     conn = sq.connect(os.path.join(get_script_dir(), 'test_base.db'))
     cur = conn.cursor()
 
-    cur.execute(f""" SELECT sur_name||" "||first_name||" "||patr_name
-                    FROM WORKER hw
-                    INNER JOIN SPECIALITY hs
-                    ON hw.speciality_id = hs.id
-                    WHERE hs.name = '{buttons}' """)
+    cur.execute(f"""SELECT sur_name||" "||first_name||" "||patr_name
+                    FROM WORKER w
+                    INNER JOIN SPECIALITY s
+                    ON w.speciality_id = s.id
+                    WHERE s.name = '{buttons}' """)
 
     users = cur.fetchall()
 
